@@ -1,0 +1,9 @@
+{
+  "network_id": "turn-diamond",
+  "profile_id": "closure",
+  "source": "A",
+  "target": "C",
+  "status": "NO_ROUTE",
+  "cost_ms_decimal": null,
+  "segment_ids": []
+}

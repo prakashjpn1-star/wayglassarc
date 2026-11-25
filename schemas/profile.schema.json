@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prakashjpn1-star/wayglassarc/schemas/profile.schema.json",
+  "title": "Immutable static cost profile",
+  "type": "object",
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "network_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "segment_costs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "segment_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "cost_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000000
+          }
+        },
+        "required": [
+          "segment_id",
+          "cost_ms"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 150000
+    },
+    "closed_segments": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 128
+      },
+      "minItems": 0,
+      "maxItems": 150000,
+      "uniqueItems": true
+    },
+    "turn_overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "incoming_segment": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "outgoing_segment": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "allowed": {
+            "type": "boolean"
+          },
+          "penalty_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000
+          }
+        },
+        "required": [
+          "incoming_segment",
+          "outgoing_segment",
+          "allowed",
+          "penalty_ms"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 600000
+    }
+  },
+  "required": [
+    "profile_id",
+    "version",
+    "network_id",
+    "segment_costs",
+    "closed_segments",
+    "turn_overrides"
+  ],
+  "additionalProperties": false
+}

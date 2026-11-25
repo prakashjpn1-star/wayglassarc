@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prakashjpn1-star/wayglassarc/schemas/route-request.schema.json",
+  "title": "Pinned exact point-to-point query",
+  "type": "object",
+  "properties": {
+    "network_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "profile_version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "mode": {
+      "enum": [
+        "ACCELERATED",
+        "REFERENCE"
+      ]
+    },
+    "allow_reference_fallback": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "network_id",
+    "profile_id",
+    "profile_version",
+    "source",
+    "target",
+    "mode",
+    "allow_reference_fallback"
+  ],
+  "additionalProperties": false
+}

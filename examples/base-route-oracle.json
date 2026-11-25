@@ -1,0 +1,12 @@
+{
+  "network_id": "turn-diamond",
+  "profile_id": "base",
+  "source": "A",
+  "target": "C",
+  "status": "OK",
+  "cost_ms_decimal": "280",
+  "segment_ids": [
+    "ad",
+    "dc"
+  ]
+}

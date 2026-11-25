@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prakashjpn1-star/wayglassarc/schemas/network.schema.json",
+  "title": "Synthetic directed road network",
+  "type": "object",
+  "properties": {
+    "format_version": {
+      "const": 1
+    },
+    "network_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "default_uturn_allowed": {
+      "type": "boolean"
+    },
+    "intersections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "intersection_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "point": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "required": [
+          "intersection_id",
+          "point"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 50000
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "segment_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "polyline": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 100
+          },
+          "cost_ms": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000000
+          }
+        },
+        "required": [
+          "segment_id",
+          "from",
+          "to",
+          "polyline",
+          "cost_ms"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 150000
+    },
+    "turn_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "incoming_segment": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "outgoing_segment": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "allowed": {
+            "type": "boolean"
+          },
+          "penalty_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000
+          }
+        },
+        "required": [
+          "incoming_segment",
+          "outgoing_segment",
+          "allowed",
+          "penalty_ms"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 600000
+    }
+  },
+  "required": [
+    "format_version",
+    "network_id",
+    "default_uturn_allowed",
+    "intersections",
+    "segments",
+    "turn_rules"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,109 @@
+{
+  "format_version": 1,
+  "network_id": "turn-diamond",
+  "default_uturn_allowed": false,
+  "intersections": [
+    {
+      "intersection_id": "A",
+      "point": [
+        0,
+        0
+      ]
+    },
+    {
+      "intersection_id": "B",
+      "point": [
+        1,
+        0
+      ]
+    },
+    {
+      "intersection_id": "C",
+      "point": [
+        2,
+        0
+      ]
+    },
+    {
+      "intersection_id": "D",
+      "point": [
+        1,
+        1
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "ab",
+      "from": "A",
+      "to": "B",
+      "polyline": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "cost_ms": 100
+    },
+    {
+      "segment_id": "bc",
+      "from": "B",
+      "to": "C",
+      "polyline": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "cost_ms": 100
+    },
+    {
+      "segment_id": "ad",
+      "from": "A",
+      "to": "D",
+      "polyline": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "cost_ms": 140
+    },
+    {
+      "segment_id": "dc",
+      "from": "D",
+      "to": "C",
+      "polyline": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "cost_ms": 140
+    }
+  ],
+  "turn_rules": [
+    {
+      "incoming_segment": "ab",
+      "outgoing_segment": "bc",
+      "allowed": false,
+      "penalty_ms": 0
+    }
+  ]
+}

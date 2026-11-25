@@ -1,0 +1,11 @@
+build/
+out/
+target/
+node_modules/
+.venv/
+.env
+*.db
+*.db-wal
+*.db-shm
+runtime/
+test-results/

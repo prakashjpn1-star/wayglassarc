@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prakashjpn1-star/wayglassarc/schemas/artifact-manifest.schema.json",
+  "title": "Topology and customized artifact identity",
+  "type": "object",
+  "properties": {
+    "format_version": {
+      "const": 1
+    },
+    "artifact_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "kind": {
+      "enum": [
+        "TOPOLOGY",
+        "CUSTOMIZED"
+      ]
+    },
+    "network_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "topology_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile_digest": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "payload_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "payload_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "format_version",
+    "artifact_id",
+    "kind",
+    "network_digest",
+    "topology_digest",
+    "profile_digest",
+    "payload_bytes",
+    "payload_digest"
+  ],
+  "additionalProperties": false
+}

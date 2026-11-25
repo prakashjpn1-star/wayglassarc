@@ -1,0 +1,8 @@
+{
+  "profile_id": "base",
+  "version": 1,
+  "network_id": "turn-diamond",
+  "segment_costs": [],
+  "closed_segments": [],
+  "turn_overrides": []
+}

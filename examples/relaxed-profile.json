@@ -1,0 +1,15 @@
+{
+  "profile_id": "relaxed",
+  "version": 1,
+  "network_id": "turn-diamond",
+  "segment_costs": [],
+  "closed_segments": [],
+  "turn_overrides": [
+    {
+      "incoming_segment": "ab",
+      "outgoing_segment": "bc",
+      "allowed": true,
+      "penalty_ms": 0
+    }
+  ]
+}
